@@ -13,6 +13,6 @@ kubectl -n argocd create configmap proxy-config \
 	--from-literal NO_PROXY="$no_proxy" 
 
 kubectl patch -n argocd \
-	-p '{ "spec": {"template": { "spec": { "containers": [ { "name": "argocd-server", "envFrom": [ { "configMapRef": {"name": "proxy-config" } } ] } ] } } } }' \
-       	deployment argocd-server
+	-p '{ "spec": {"template": { "spec": { "containers": [ { "name": "argocd-repo-server", "envFrom": [ { "configMapRef": {"name": "proxy-config" } } ] } ] } } } }' \
+       	deployment argocd-repo-server
 
